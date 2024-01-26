@@ -1,5 +1,5 @@
 import datetime
-import requests  # This may need to be installed from pip
+import requests
 import yaml
 import os
 
