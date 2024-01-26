@@ -4,7 +4,8 @@ WORKDIR /usr/src/app
 
 COPY ./main.py .
 
-RUN pip install pyyaml
+RUN pip install pyyaml \
+    && pip install requests
 
 Volume ./data.yml
 
