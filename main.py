@@ -50,7 +50,9 @@ for book in fetched_notes:
         memo += book["title"]
         data["cached_notes"].append(memo)
 
-
+for i in range(config["update_limit"] if config["update_limit"] <= len(data["cached_notes"]) else len(data["cached_notes"])):
+    memo = data["cached_notes"].pop(0)
+    requests.post(config["flomo_link"],json={"Content":memo},verify=False)
 
 with open(data_path,"w") as f:
     yaml.safe_dump(data,f)
