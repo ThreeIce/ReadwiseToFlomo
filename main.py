@@ -5,9 +5,9 @@ import os
 
 data_path = "./data.yml"
 config_path = "./config.yml"
-config = null
-data = null
-fetched_notes = null
+config = None
+data = None
+fetched_notes = None
 def fetch_from_export_api(updated_after=None):
     full_data = []
     next_page_cursor = None
