@@ -39,7 +39,7 @@ if os.path.exists(data_path) and (os.path.getsize(data_path) != 0):
 else:
     data = {"last_fetch_time":"","cached_notes":[]}
     fetched_notes = fetch_from_export_api()
-data["last_fetch_time"] = datetime.timedelta.now().isoformat()
+data["last_fetch_time"] = datetime.datetime.now().isoformat()
 
 for book in fetched_notes:
     for highlight in book["highlights"]:
