@@ -46,7 +46,7 @@ for book in fetched_notes:
         memo = highlight["text"] + "\n"
         if highlight["note"]:
             memo += "**Note:**\n" + highlight["note"] + "\n"
-        memo += "[Source](" + highlight["readwise_url"] + ")\n"
+        memo += highlight["readwise_url"] + "\n"
         memo += book["title"]
         data["cached_notes"].append(memo)
 
