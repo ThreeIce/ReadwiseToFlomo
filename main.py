@@ -3,6 +3,11 @@ import requests  # This may need to be installed from pip
 import yaml
 import os
 
+data_path = "./data.yml"
+config_path = "./config.yml"
+config = null
+data = null
+fetched_notes = null
 def fetch_from_export_api(updated_after=None):
     full_data = []
     next_page_cursor = None
@@ -16,20 +21,14 @@ def fetch_from_export_api(updated_after=None):
         response = requests.get(
             url="https://readwise.io/api/v2/export/",
             params=params,
-            headers={"Authorization": f"Token {config.readwise_token}"}, verify=False
+            headers={"Authorization": f"Token {config["readwise_token"]}"}, verify=False
         )
         full_data.extend(response.json()['results'])
         next_page_cursor = response.json().get('nextPageCursor')
         if not next_page_cursor:
             break
     return full_data
-
 # read config
-data_path = "./data.yml"
-config_path = "./config.yml"
-config = null
-data = null
-fetched_notes = null
 with open(config_path,"r") as f:
     config = yaml.load(f)
 
