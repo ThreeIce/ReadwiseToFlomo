@@ -1,7 +1,7 @@
 version: '3'
 services:
   main:
-    build: ./ReadwiseToFlomo
+    build: .
     restart: "no"
     volumes:
       - ./data.yml:/usr/src/app/data.yml
