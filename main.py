@@ -32,7 +32,7 @@ def fetch_from_export_api(updated_after=None):
 with open(config_path,"r") as f:
     config = yaml.load(f)
 
-if os.path.exists(data_path):
+if os.path.exists(data_path) and os.path.getsize(data_path) is not 0:
     with open(data_path,"r") as f:
         data = yaml.load(f)
     fetched_notes = fetch_from_export_api(data["last_fetch_time"])
