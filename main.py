@@ -30,11 +30,11 @@ def fetch_from_export_api(updated_after=None):
     return full_data
 # read config
 with open(config_path,"r") as f:
-    config = yaml.load(f)
+    config = yaml.safe_load(f)
 
 if os.path.exists(data_path) and (os.path.getsize(data_path) != 0):
     with open(data_path,"r") as f:
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
     fetched_notes = fetch_from_export_api(data["last_fetch_time"])
 else:
     data = {"last_fetch_time":"","cached_notes":[]}
@@ -53,5 +53,5 @@ for book in fetched_notes:
 
 
 with open(data_path,"w") as f:
-    yaml.dump(data,f)
+    yaml.safe_dump(data,f)
 
